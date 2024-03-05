@@ -60,18 +60,23 @@ public class Main {
 			switch(choice) {
 			case 1:
 				// Display all books
+				userPanel.displayAllBooks();
 				break;
 			case 2:
 				// Search for a book
+				userPanel.searchForBook(null);
 				break;
 			case 3:
 				// Add book to cart
+				userPanel.addBookToCart(choice, choice, choice);
 				break;
 			case 4:
 				// View cart
+				userPanel.viewCart(choice);
 				break;
 			case 5:
 				// Checkout
+				userPanel.checkout(choice);
 				break;
 			case 6:
 				return;
@@ -100,15 +105,19 @@ public class Main {
 			switch(choice) {
 			case 1:
 				// Display all books
+				adminPanel.displayAllBooks();
 				break;
 			case 2:
 				// Add book to store
+				adminPanel.addBookToStore(null, null, choice);
 				break;
 			case 3:
 				// Delete book from store
+				adminPanel.deleteBookFromStore(choice);
 				break;
 			case 4:
 				// Update book data
+				adminPanel.updateBookData(choice, null, null, choice);
 				break;
 			case 5:
 				return;
