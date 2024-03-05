@@ -20,7 +20,7 @@ public class AdminPanel {
 			ResultSet rs = stmt.executeQuery();
 			System.out.println("Books available:");
 			while (rs.next()) {
-				System.out.println(rs.getInt("id") + "\t" + rs.getString("title") + "\t" + rs.getString("suthor") + "\t"
+				System.out.println(rs.getInt("id") + "\t" + rs.getString("title") + "\t" + rs.getString("author") + "\t"
 						+ rs.getDouble("price"));
 			}
 		} catch (Exception e) {

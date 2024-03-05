@@ -1,5 +1,6 @@
 package com.eb.main;
 
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 import com.eb.dao.AdminPanel;
@@ -34,6 +35,7 @@ public class Main {
 				break;
 			case 4:
 				System.out.println("Thank you for visiting. Exiting...");
+				break;
 			default:
 				System.out.println("Invalid choice. Please try again.");
 			}
@@ -109,14 +111,27 @@ public class Main {
 				break;
 			case 2:
 				// Add book to store
-				adminPanel.addBookToStore(null, null, choice);
+				System.out.println("Enter Book Title: ");
+				String title = scanner.next();
+				
+				System.out.println("Enter Author:");
+				String author = scanner.next();
+				
+				System.out.println("Enter the Price: ");
+				double price = scanner.nextDouble();
+				
+				adminPanel.addBookToStore(title, author, price);
 				break;
 			case 3:
 				// Delete book from store
-				adminPanel.deleteBookFromStore(choice);
+				System.out.println("Enter the Book ID which you want to delete: ");
+				int bookid = scanner.nextInt();
+				
+				adminPanel.deleteBookFromStore(bookid);
 				break;
 			case 4:
 				// Update book data
+		            
 				adminPanel.updateBookData(choice, null, null, choice);
 				break;
 			case 5:
