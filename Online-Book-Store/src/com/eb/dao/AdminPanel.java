@@ -3,11 +3,13 @@ package com.eb.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
 import com.eb.database.Database;
 
 public class AdminPanel {
 	private Connection conn;
+	Scanner scanner = new Scanner(System.in);
 
 	public AdminPanel() {
 		this.conn = Database.createConnection();
