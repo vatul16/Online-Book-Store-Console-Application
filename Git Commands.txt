@@ -1,0 +1,11 @@
+Git commands to configure git
+
+1) git config --global user.name "<your_github_username>"
+2) git config --global user.email "<your_github_email>"
+
+Git command to push the project on your_github_email
+
+1) git status
+2) git add .
+3) git commit -m "commit message"
+4) git push -u origin master
