@@ -111,28 +111,12 @@ public class Main {
 				break;
 			case 2:
 				// Add book to store
-				System.out.println("Enter Book Title: ");
-				String title = scanner.next();
-				
-				System.out.println("Enter Author:");
-				String author = scanner.next();
-				
-				System.out.println("Enter the Price: ");
-				double price = scanner.nextDouble();
-				
-				adminPanel.addBookToStore(title, author, price);
 				break;
 			case 3:
 				// Delete book from store
-				System.out.println("Enter the Book ID which you want to delete: ");
-				int bookid = scanner.nextInt();
-				
-				adminPanel.deleteBookFromStore(bookid);
 				break;
 			case 4:
 				// Update book data
-		            
-				adminPanel.updateBookData(choice, null, null, choice);
 				break;
 			case 5:
 				return;
