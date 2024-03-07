@@ -48,7 +48,7 @@ public class AdminLogin {
 		}
 	}
 	
-	public void adminPanelMenu() {
+	public void adminPanelMenu() throws SQLException {
 		
 		int choice = 0;
 		
@@ -69,14 +69,59 @@ public class AdminLogin {
 				break;
 			case 2:
 				// Add book to store
+				System.out.println("Enter Book Details \n");
+				System.out.print("Title : ");
+				String title = scanner.next();
+				System.out.println();
+				System.out.print("Author : ");
+				String author = scanner.next();
+				System.out.println();
+				System.out.print("Price : ");
+				double price = scanner.nextDouble();
+				System.out.println();
+				adminPanel.addBookToStore(title, author, price);
+				
 				break;
 			case 3:
 				// Delete book from store
+				System.out.print("Enter Id of the book that needs to be deleted : ");
+				int bookId = scanner.nextInt();
+				adminPanel.deleteBookFromStore(bookId);
 				break;
 			case 4:
 				// Update book data
+				
+				System.out.println("Press 1 to Update Title");
+				System.out.println("Press 2 to Update Author");
+				System.out.println("Press 3 to Update Price");
+				System.out.println("Enter choice");
+				int updateOption = scanner.nextInt();
+				System.out.println("Enter the book id which you want to update");
+				int bookId1 = scanner.nextInt();
+				if(updateOption==4) {
+					System.out.print("Title : ");
+					String newTitle = scanner.next();
+					System.out.println();
+					System.out.print("Author : ");
+					String newAuthor = scanner.next();
+					System.out.println();
+					System.out.print("Price : ");
+					double newPrice = scanner.nextDouble();
+					adminPanel.updateAllBookData(bookId1,newTitle,newAuthor,newPrice);
+				}
+				else if(updateOption==1 || updateOption==2 || updateOption==3 ) {
+					System.out.print("Enter the value to be updated");
+					String updatedValue = scanner.next();
+					adminPanel.updateBookData( bookId1, updatedValue,updateOption);
+				}
+				else {
+					System.out.println("Invalid input");
+				}
+				
 				break;
 			case 5:
+				Main m = new Main();
+				m.menu();
 				return;
 			default:
 				System.out.println("Invalid choice. Please try again.");
