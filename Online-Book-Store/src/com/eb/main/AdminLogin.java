@@ -98,18 +98,18 @@ public class AdminLogin {
 				int updateOption = scanner.nextInt();
 				System.out.println("Enter the book id which you want to update");
 				int bookId1 = scanner.nextInt();
-				if(updateOption==4) {
-					System.out.print("Title : ");
-					String newTitle = scanner.next();
-					System.out.println();
-					System.out.print("Author : ");
-					String newAuthor = scanner.next();
-					System.out.println();
-					System.out.print("Price : ");
-					double newPrice = scanner.nextDouble();
-					adminPanel.updateAllBookData(bookId1,newTitle,newAuthor,newPrice);
-				}
-				else if(updateOption==1 || updateOption==2 || updateOption==3 ) {
+//				if(updateOption==4) {
+//					System.out.print("Title : ");
+//					String newTitle = scanner.next();
+//					System.out.println();
+//					System.out.print("Author : ");
+//					String newAuthor = scanner.next();
+//					System.out.println();
+//					System.out.print("Price : ");
+//					double newPrice = scanner.nextDouble();
+//					adminPanel.updateAllBookData(bookId1,newTitle,newAuthor,newPrice);
+//				}
+				if(updateOption==1 || updateOption==2 || updateOption==3 ) {
 					System.out.print("Enter the value to be updated");
 					String updatedValue = scanner.next();
 					adminPanel.updateBookData( bookId1, updatedValue,updateOption);

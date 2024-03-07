@@ -58,7 +58,7 @@ public class AdminPanel {
 	public void deleteBookFromStore(int bookId) throws SQLException {
 		try {
 			this.conn = Database.createConnection();
-			String query = "DELETE FROM books WHERE book_id = ?";
+			String query = "DELETE FROM books WHERE id = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, bookId);
 			int res = ps.executeUpdate();
@@ -81,10 +81,10 @@ public class AdminPanel {
 			this.conn = Database.createConnection();
 			switch(updateOption) {
 			case 1:
-				String query = "UPDATE books SET title = ? where book_id=?";
+				String query = "UPDATE books SET title = ? where id=?";
 				PreparedStatement ps = conn.prepareStatement(query);
 				ps.setString(1, updatedValue);
-				ps.setInt(2, updateOption);
+				ps.setInt(2, bookId1);
 				int res = ps.executeUpdate();
 				if(res>0) {
 					System.out.println("Data updated successfully");
@@ -94,10 +94,10 @@ public class AdminPanel {
 				}
 				break;
 			case 2:
-				String query2 = "UPDATE books SET author = ? where book_id=?";
+				String query2 = "UPDATE books SET author = ? where id=?";
 				PreparedStatement ps2 = conn.prepareStatement(query2);
 				ps2.setString(1, updatedValue);
-				ps2.setInt(2, updateOption);
+				ps2.setInt(2, bookId1);
 				int res2 = ps2.executeUpdate();
 				if(res2>0) {
 					System.out.println("Data updated successfully");
@@ -107,11 +107,11 @@ public class AdminPanel {
 				}
 				break;
 			case 3:
-				String query3 = "UPDATE books SET price = ? where book_id=?";
+				String query3 = "UPDATE books SET price = ? where id=?";
 				PreparedStatement ps3 = conn.prepareStatement(query3);
 				double price = Double.parseDouble(updatedValue);
 				ps3.setDouble(1, price);
-				ps3.setInt(2, updateOption);
+				ps3.setInt(2, bookId1);
 				int res3 = ps3.executeUpdate();
 				if(res3>0) {
 					System.out.println("Data updated successfully");
@@ -129,29 +129,29 @@ public class AdminPanel {
 		
 		
 	}
-	public void updateAllBookData(int bookId,String title,String author,double price) throws SQLException {
-		try {
-			this.conn = Database.createConnection();
-			String query = "UPDATE books SET title = ? , author=?,price=? where book_id=?";
-			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, title);
-			ps.setString(2, author);
-			ps.setDouble(3, price);
-			ps.setInt(4, bookId);
-			int res = ps.executeUpdate();
-			if(res>0) {
-				System.out.println("Data updated successfully");
-			}
-			else {
-				System.out.println("Data not updated");
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			
-		}
-		
-		
-		
-	}
+//	public void updateAllBookData(int bookId,String title,String author,double price) throws SQLException {
+//		try {
+//			this.conn = Database.createConnection();
+//			String query = "UPDATE books SET title = ? , author=?,price=? where book_id=?";
+//			PreparedStatement ps = conn.prepareStatement(query);
+//			ps.setString(1, title);
+//			ps.setString(2, author);
+//			ps.setDouble(3, price);
+//			ps.setInt(4, bookId);
+//			int res = ps.executeUpdate();
+//			if(res>0) {
+//				System.out.println("Data updated successfully");
+//			}
+//			else {
+//				System.out.println("Data not updated");
+//			}
+//			
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//			
+//		}
+//		
+//		
+//		
+//	}
 }

@@ -48,7 +48,26 @@ public class UserLogin {
 		}
 	}
 	
-	public void userPanelMenu(){
+	public int getUserIdByUsernameAndPassword(String username, String password) {
+        int userId = 0;
+        try {
+            String sql = "SELECT id FROM users WHERE username = ? AND password = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("id");
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userId;
+    }
+	
+	public void userPanelMenu() throws SQLException{
 		Scanner scanner = new Scanner(System.in);
 		int choice = 0;
 		
@@ -70,8 +89,8 @@ public class UserLogin {
 				break;
 			case 2:
 				// Search for a book
-				System.out.println("Search : ");
-				String search = scanner.nextLine();
+				System.out.println("Enter title to be searched : ");
+				String search = scanner.next();
 				System.out.print("\n");
 				userPanel.searchForBook(search);
 				break;
