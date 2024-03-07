@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import com.eb.database.Database;
+import com.eb.main.Main;
 
 public class UserPanel {
 	private Connection conn;
@@ -31,6 +32,7 @@ public class UserPanel {
 
 	public void searchForBook(String title) {
 		try {
+			
 			String query = "SELECT * FROM books WHERE title LIKE ?";
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setString(1, "%" + title + "%");
@@ -80,9 +82,19 @@ public class UserPanel {
 		}
 	}
 
-	public void checkout(int userId) {
+	public void checkout() {
 		try {
 			// Implement checkout logic here
+			System.out.println("You have been checked out");
+			System.out.println("Press 1 to go to Main Menu");
+//			System.out.println("Press 2 to go to User Panel");
+			Scanner scanner = new Scanner(System.in);
+			int choice =scanner.nextInt();
+			if(choice==1) {
+				Main m = new Main();
+				m.menu();
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

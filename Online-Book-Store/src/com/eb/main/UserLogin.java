@@ -70,19 +70,34 @@ public class UserLogin {
 				break;
 			case 2:
 				// Search for a book
-				userPanel.searchForBook(null);
+				System.out.println("Search : ");
+				String search = scanner.nextLine();
+				System.out.print("\n");
+				userPanel.searchForBook(search);
 				break;
 			case 3:
 				// Add book to cart
-				userPanel.addBookToCart(choice, choice, choice);
+				System.out.print("Enter User Id : ");
+				int userId =scanner.nextInt();
+				System.out.print("\n");
+				System.out.print("Enter Book Id : ");
+				int bookId= scanner.nextInt();
+				System.out.print("\n");
+				System.out.print("Enter the quantity : ");
+				int quantity=scanner.nextInt();
+				System.out.print("\n");
+				userPanel.addBookToCart(userId, bookId, quantity);
 				break;
 			case 4:
 				// View cart
-				userPanel.viewCart(choice);
+				System.out.print("Enter User Id : ");
+				int userID =scanner.nextInt();
+				System.out.print("\n");
+				userPanel.viewCart(userID);
 				break;
 			case 5:
 				// Checkout
-				userPanel.checkout(choice);
+				userPanel.checkout();
 				break;
 			case 6:
 				return;
