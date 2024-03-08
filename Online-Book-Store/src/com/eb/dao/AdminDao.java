@@ -23,6 +23,7 @@ public class AdminDao {
 			String query = "SELECT * FROM books;";
 			PreparedStatement stmt = conn.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
+			
 			System.out.println("Book ID\tBook Title\tAuthor Name\tPrice\tQuantity");
 			while (rs.next()) {
 				System.out.println(rs.getInt("id") + "\t" + rs.getString("title") + "\t" + rs.getString("author") + "\t"

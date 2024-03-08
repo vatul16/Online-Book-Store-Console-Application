@@ -1,3 +1,6 @@
-[{"id":1, "username":"admin", "password":"admin", "isAdmin":1},
- {"id":2, "username":"atul", "password":"atulv", "isAdmin":0},
- {"id":3, "username":"jerry", "password":"jerry45", "isAdmin":0}]
+[{"id":101, "username":"admin", "password":"admin", "isAdmin":1},
+ {"id":102, "username":"atul", "password":"atulv", "isAdmin":0},
+ {"id":103, "username":"saniya", "password":"saniyag", "isAdmin":0},
+ {"id":104, "username":"abhirami", "password":"abhiramic", "isAdmin":0},
+ {"id":105, "username":"mufaddal", "password":"mufaddalp", "isAdmin":0},
+ {"id":106, "username":"aaftab", "password":"aaftabk", "isAdmin":0}]

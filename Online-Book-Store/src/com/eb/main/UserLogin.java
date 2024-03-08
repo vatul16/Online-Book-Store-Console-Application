@@ -37,7 +37,7 @@ public class UserLogin {
 			
 			if(!isAdmin) {
 				System.out.println("Welcome to User Panel");
-				System.out.println("ID: " + userId + "\tUsername: " + userName);
+				System.out.println("ID: " + userId + "\t" + "Username: " + userName);
 				
 				// Add your user panel logic here
 				userPanelMenu(userId, userName);
@@ -63,7 +63,7 @@ public class UserLogin {
 			System.out.println("3. Add book to cart");
 			System.out.println("4. View cart");
 			System.out.println("5. Checkout");
-			System.out.println("6. Back to main menu");
+			System.out.println("6. Log out");
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
 			
@@ -74,34 +74,19 @@ public class UserLogin {
 				break;
 			case 2:
 				// Search for a book
-				System.out.println("Enter title to be searched : ");
-				String search = scanner.next();
-				System.out.print("\n");
-				userPanel.searchForBook(search);
+				userPanel.searchForBook();
 				break;
 			case 3:
 				// Add book to cart
-				System.out.print("Enter User Id : ");
-				int userId =scanner.nextInt();
-				System.out.print("\n");
-				System.out.print("Enter Book Id : ");
-				int bookId= scanner.nextInt();
-				System.out.print("\n");
-				System.out.print("Enter the quantity : ");
-				int quantity=scanner.nextInt();
-				System.out.print("\n");
-				userPanel.addBookToCart(userId, bookId, quantity);
+				userPanel.addBookToCart(currentUserId);
 				break;
 			case 4:
 				// View cart
-//				System.out.print("Enter User Id : ");
-//				int userID =scanner.nextInt();
-//				System.out.print("\n");
-//				userPanel.viewCart(userID);
+				userPanel.viewCart(currentUserId);
 				break;
 			case 5:
 				// Checkout
-				userPanel.checkout();
+				userPanel.checkout(currentUserId);
 				break;
 			case 6:
 				return;
