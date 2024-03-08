@@ -26,3 +26,11 @@ CREATE TABLE cart(
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
+alter table cart add quantity int;
+alter table cart modify user_id int, add constraint uid FOREIGN KEY (user_id) REFERENCES users(id) on delete cascade;
+alter table cart modify book_id int, add constraint bid FOREIGN KEY (book_id) REFERENCES books(id) on delete cascade;
+select * from cart;
+select * from users;
+select * from books;
+
+insert into users(username,password,isAdmin) values("root","root",true);

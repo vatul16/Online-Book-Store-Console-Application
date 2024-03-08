@@ -44,7 +44,7 @@ public class Book {
 		super();
 	}
 	
-	// Parameterised Constructor
+	// Parameterized Constructor
 	public Book(String title, String author, double price) {
 		super();
 		this.title = title;
