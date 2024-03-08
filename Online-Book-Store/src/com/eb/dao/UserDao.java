@@ -8,10 +8,10 @@ import java.util.Scanner;
 import com.eb.database.Database;
 import com.eb.main.Main;
 
-public class UserPanel {
+public class UserDao {
 	private Connection conn;
 
-	public UserPanel() {
+	public UserDao() {
 		this.conn = Database.createConnection();
 	}
 
@@ -86,14 +86,14 @@ public class UserPanel {
 		try {
 			// Implement checkout logic here
 			System.out.println("You have been checked out");
-			System.out.println("Press 1 to go to Main Menu");
-//			System.out.println("Press 2 to go to User Panel");
-			Scanner scanner = new Scanner(System.in);
-			int choice =scanner.nextInt();
-			if(choice==1) {
-				Main m = new Main();
-				m.menu();
-			}
+			return;
+//			System.out.println("Press 1 to go to Main Menu");
+////			System.out.println("Press 2 to go to User Panel");
+//			Scanner scanner = new Scanner(System.in);
+//			int choice =scanner.nextInt();
+//			if(choice==1) {
+//				
+//			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

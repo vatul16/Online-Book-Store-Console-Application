@@ -1,25 +1,17 @@
 package com.eb.main;
-import com.eb.dao.*;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.eb.dao.AdminPanel;
-
 public class Main {
 	int  choice=0;
 	public static void main(String[] args) throws SQLException {
-		Main m = new Main();
-		m.menu();
-
-		
-	}
-		
-	public  void menu() throws SQLException {
 		Scanner scanner = new Scanner(System.in);
 		AdminLogin adminLogin = new AdminLogin();
 		UserLogin userLogin = new UserLogin();
 		NewUser newUser = new NewUser();
+		
+		int choice;
 		
 		do {
 			System.out.println("Welcome to the Online Book Store");
@@ -47,7 +39,8 @@ public class Main {
 				System.out.println("Invalid choice. Please try again.");
 			}
 		} while (choice != 4);
-
+		
 		scanner.close();
+		
 	}
 }

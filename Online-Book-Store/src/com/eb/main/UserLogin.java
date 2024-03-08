@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.eb.dao.UserPanel;
+import com.eb.dao.UserDao;
 import com.eb.database.Database;
 
 public class UserLogin {
 	Scanner scanner = new Scanner(System.in);
 	Connection conn = Database.createConnection();
-	UserPanel userPanel = new UserPanel();
+	UserDao userPanel = new UserDao();
 	
 	public void userLogin() throws SQLException {
 		System.out.println("Enter username:");
@@ -22,7 +22,7 @@ public class UserLogin {
 		String password = scanner.next();
 		
 		// Prepare SQL statement to check if the user is not an admin
-		String query = "SELECT isAdmin FROM users WHERE username = ? AND password = ?";
+		String query = "SELECT id, username, password, isAdmin FROM users WHERE username = ? AND password = ?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setString(1, username);
 		ps.setString(2, password);
@@ -31,13 +31,16 @@ public class UserLogin {
 		
 		// Check if the result set has any row
 		if(rs.next()) {
+			int userId = rs.getInt("id");
+			String userName = rs.getString("username");
 			boolean isAdmin = rs.getBoolean("isAdmin");
 			
 			if(!isAdmin) {
 				System.out.println("Welcome to User Panel");
+				System.out.println("ID: " + userId + "\tUsername: " + userName);
 				
 				// Add your user panel logic here
-				userPanelMenu();
+				userPanelMenu(userId, userName);
 			}
 			else {
 				System.out.println("You are trying to login with Admin Credentials");
@@ -48,26 +51,8 @@ public class UserLogin {
 		}
 	}
 	
-	public int getUserIdByUsernameAndPassword(String username, String password) {
-        int userId = 0;
-        try {
-            String sql = "SELECT id FROM users WHERE username = ? AND password = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                userId = rs.getInt("id");
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return userId;
-    }
 	
-	public void userPanelMenu() throws SQLException{
+	public void userPanelMenu(int currentUserId, String currentUsername) throws SQLException{
 		Scanner scanner = new Scanner(System.in);
 		int choice = 0;
 		
@@ -109,10 +94,10 @@ public class UserLogin {
 				break;
 			case 4:
 				// View cart
-				System.out.print("Enter User Id : ");
-				int userID =scanner.nextInt();
-				System.out.print("\n");
-				userPanel.viewCart(userID);
+//				System.out.print("Enter User Id : ");
+//				int userID =scanner.nextInt();
+//				System.out.print("\n");
+//				userPanel.viewCart(userID);
 				break;
 			case 5:
 				// Checkout
