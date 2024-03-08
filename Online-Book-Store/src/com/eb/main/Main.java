@@ -10,6 +10,7 @@ public class Main {
 	int  choice=0;
 	public static void main(String[] args) throws SQLException {
 		Main m = new Main();
+		m.menu();
 
 		
 	}
