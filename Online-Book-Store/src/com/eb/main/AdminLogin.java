@@ -53,12 +53,14 @@ public class AdminLogin {
 		int choice = 0;
 		
 		do {
-			System.out.println("Admin Panel");
+			System.out.println("---------- ADMIN PANEL ----------");
+			System.out.println("Menu");
 			System.out.println("1. Display all books");
 			System.out.println("2. Add book to store");
 			System.out.println("3. Delete book from store");
 			System.out.println("4. Update book data");
-			System.out.println("5. Back to main menu");
+			System.out.println("5. Logout");
+			
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
 			

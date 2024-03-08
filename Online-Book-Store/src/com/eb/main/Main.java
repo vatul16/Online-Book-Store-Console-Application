@@ -14,7 +14,8 @@ public class Main {
 		int choice;
 		
 		do {
-			System.out.println("Welcome to the Online Book Store");
+			System.out.println("---------- ONLINE BOOK STORE ----------");
+			System.out.println("Menu");
 			System.out.println("1. Admin Panel");
 			System.out.println("2. User Panel");
 			System.out.println("3. New User");
@@ -33,10 +34,11 @@ public class Main {
 				newUser.newUser();
 				break;
 			case 4:
-				System.out.println("Thank you for visiting. Exiting...");
+				System.out.println("THANK YOU FOR VISITING...");
+				System.out.println("EXITTING...");
 				break;
 			default:
-				System.out.println("Invalid choice. Please try again.");
+				System.out.println("INVALID CHOICE. PLEASE TRY AGAIN...");
 			}
 		} while (choice != 4);
 		
