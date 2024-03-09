@@ -36,9 +36,6 @@ public class UserLogin {
 			boolean isAdmin = rs.getBoolean("isAdmin");
 			
 			if(!isAdmin) {
-				System.out.println("Welcome to User Panel");
-				System.out.println("ID: " + userId + "\t" + "Username: " + userName);
-				
 				// Add your user panel logic here
 				userPanelMenu(userId, userName);
 			}

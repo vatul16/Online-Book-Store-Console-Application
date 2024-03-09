@@ -2,6 +2,10 @@ CREATE DATABASE online_book_store;
 
 USE online_book_store;
 
+DROP TABLE users;
+DROP TABLE books;
+DROP TABLE cart;
+
 -- Creating User Table
 CREATE TABLE users(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -33,8 +37,12 @@ alter table cart modify user_id int, add constraint uid FOREIGN KEY (user_id) RE
 alter table cart modify book_id int, add constraint bid FOREIGN KEY (book_id) REFERENCES books(id) on delete cascade;
 
 -- Inserting into users
-INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES ('101', 'admin', 'admin', '1');
-INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES ('102', 'atul', 'atulv', '0');
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (101, "admin", "admin", 1);
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (102, "atul", "atulv", 0);
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (103, "saniya", "saniyag", 0);
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (104, "abhirami", "abhiramic", 0);
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (105, "mufaddal", "mufaddalp", 0);
+INSERT INTO `online_book_store`.`users` (`id`, `username`, `password`, `isAdmin`) VALUES (106, "aaftab", "aaftabk", 0);
 
 -- Inserting into books
 INSERT INTO books(id, title, author, price, quantity) VALUES(1001, "Effective Java", "Joshua Bloch", 959.5, 10);
@@ -52,5 +60,3 @@ INSERT INTO cart(id, user_id, book_id, quantity) VALUES(1, 102, 1003, 2);
 select * from cart;
 select * from users;
 select * from books;
-
-DELETE FROM books WHERE id=1003;
