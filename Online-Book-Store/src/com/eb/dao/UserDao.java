@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import com.eb.database.Database;
 import com.eb.main.Main;
+import com.eb.pojo.Book;
 
 public class UserDao {
 	private Connection conn;
@@ -35,26 +36,13 @@ public class UserDao {
 		}
 	}
 
-	public void searchForBook() {
+	public void searchForBook(int searchChoice, String bookQuery) {
 		try {
-			System.out.println("-------------------- SEARCH FOR A BOOK IN STORE --------------------");
-
-			System.out.println("Search Menu");
-			System.out.println("1. Search by Book Title");
-			System.out.println("2. Search by Author Name");
-			System.out.println("3. Back");
-
-			System.out.print("Enter choice: ");
-			int choice = scanner.nextInt();
-
-			switch (choice) {
+			switch (searchChoice) {
 			case 1:
-				System.out.println("Enter Book Title to be searched : ");
-				String searchTitle = scanner.next();
-
 				String searchTitleQuery = "SELECT * FROM books WHERE title LIKE ?";
 				PreparedStatement ps = conn.prepareStatement(searchTitleQuery);
-				ps.setString(1, "%" + searchTitle + "%");
+				ps.setString(1, "%" + bookQuery + "%");
 
 				ResultSet rs = ps.executeQuery();
 
@@ -68,12 +56,9 @@ public class UserDao {
 				break;
 
 			case 2:
-				System.out.println("Enter Author Name to be searched : ");
-				String searchAuthor = scanner.next();
-
 				String searchAuthorQuery = "SELECT * FROM books WHERE author LIKE ?";
 				PreparedStatement ps1 = conn.prepareStatement(searchAuthorQuery);
-				ps1.setString(1, "%" + searchAuthor + "%");
+				ps1.setString(1, "%" + bookQuery + "%");
 
 				ResultSet rs1 = ps1.executeQuery();
 
@@ -97,29 +82,18 @@ public class UserDao {
 		}
 	}
 
-	public void addBookToCart(int loggedInUserId) {
+	public void addBookToCart(int loggedInUserId, int bookId, int quantity) {
 		try {
-			System.out.println("-------------------- ADD BOOK TO CART --------------------");
-
-			System.out.print("Enter Book ID you want to add to the cart: ");
-			int bookId = scanner.nextInt();
-
-			System.out.print("Enter the quantity : ");
-			int quantity = scanner.nextInt();
-
-			String AddCartQuery = "INSERT INTO cart (user_id, book_id, quantity) VALUES (?, ?, ?)";
-			PreparedStatement stmt = conn.prepareStatement(AddCartQuery);
-			stmt.setInt(1, loggedInUserId);
-			stmt.setInt(2, bookId);
-			stmt.setInt(3, quantity);
-
-			int rowsAffected = stmt.executeUpdate();
-
-			if (rowsAffected > 0) {
-				System.out.println("BOOK ADDED TO YOUR CART SUCCESSFULLT!!!");
-			} else {
-				System.out.println("FAILED TO ADD BOOK TO YOUR CART");
-			}
+			boolean f = false;
+			
+			String query = "INSERT INTO cart (user_id, book_id, quantity) VALUES (?, ?, ?)";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, loggedInUserId);
+			ps.setInt(2, bookId);
+			ps.setInt(3, quantity);
+			ps.executeUpdate();
+			
+			f = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
