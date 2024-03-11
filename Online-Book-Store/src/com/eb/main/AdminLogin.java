@@ -35,8 +35,6 @@ public class AdminLogin {
 			boolean isAdmin = rs.getBoolean("isAdmin");
 			
 			if(isAdmin) {
-				System.out.println("Welcome to Admin Panel");
-				
 				// Add your admin panel logic here
 				adminPanelMenu();
 			}
